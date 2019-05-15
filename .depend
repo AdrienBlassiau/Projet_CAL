@@ -1,0 +1,7 @@
+cal.cmo : cal.cmi
+cal.cmx : cal.cmi
+cal.cmi :
+prog.cmo :
+prog.cmx :
+test.cmo :
+test.cmx :
