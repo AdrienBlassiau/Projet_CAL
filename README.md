@@ -21,3 +21,7 @@ make clean && make complet && ./run
 ```bash
 make clean
 ```
+
+### Rapport et Sujet
+
+Le rapport du projet ainsi que le sujet se trouvent dans le dossier doc.
