@@ -1,24 +1,38 @@
 open Printf
 
+(*
+   Type somme décrivant les instructions de notre URM
+*)
 type instruction =
   | Reset of int
   | Incr of int
   | Set of int * int
   | Jump of int * int * int
 
+(*
+   Type somme décrivant des constantes  entières (positives) et des sommes
+   d’expression
+*)
 type expression =
   | Entier of int
   | Somme of expression * expression
   | If_then_else of expression * expression * expression
 
-let max_registers = 20
-let max_steps = 2000
 
+(*
+   Type décrivant un programme
+*)
 type programme = instruction array
 
+(*
+   Quelques exceptions
+*)
 exception Memory_Exhausted
 exception Segmentation_Fault
 exception Resources_Exhausted
+
+let max_registers = 20
+let max_steps = 2000
 
 
 (***************************************************************************)
@@ -65,7 +79,7 @@ let prog_somme_modify =
      Jump (1, 2, 10);
      Jump (1, 1, 1) |]
 
-(* [prog_constant] renvoie le nombre passé en paramètre
+(* [prog_constant] renvoie l'entier passé en paramètre
 *)
 let prog_constant =
   [| Jump (0, 1, 4);
@@ -73,7 +87,7 @@ let prog_constant =
      Jump (0, 1, 4);
      Jump (1, 1, 1) |]
 
-(* [prog_constant_v2] renvoie le nombre passé en paramètre
+(* [prog_constant_v2] renvoie l'entier passé en paramètre
 *)
 let prog_constant_v2 nb = Array.make nb (Incr 0)
 
@@ -160,6 +174,11 @@ let prog_somme_dizaine_unite =
 (***************************************************************************)
 (***************************************************************************)
 
+(* [string_of_prog r_prog] affiche le programmes
+
+   @requires  r_prog est le pogramme
+   @ensures   le résultat est affiché sur la sortie standard
+*)
 let rec string_of_prog prog =
   Array.iteri (fun i ins ->
       match ins with
@@ -169,8 +188,7 @@ let rec string_of_prog prog =
       | Jump (r1, r2, s) -> printf "%d : Jump %d, %d, %d\n" i r1 r2 s) prog
 
 (* [print_registers r_tab r_max] affiche le tableau des registres modifiés
-   et/ou
-   accédés
+   et/ou accédés
 
    @requires  r_tab est un ensemble de registres, r_max l'indice du dernier
               registre modifié et/ou accéder

@@ -13,7 +13,7 @@ Le projet comporte 5 fichiers dont celui ci.
 **Pour lancer les tests unitaires, rentrer la commande suivante à la racine du projet :**
 
 ```bash
-make clean && make complet && ./run
+make clean && make all && ./run
 ```
 
 **Pour nettoyer le dossier :**

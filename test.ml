@@ -1,4 +1,4 @@
-open Cal
+open Urm
 open Printf
 
 exception Error of string * exn
@@ -319,12 +319,6 @@ let tests_if_then_else =
     (fun () ->
        let test_prog = if_then_else prog_somme_dizaine_unite prog_moins_1 prog_succ in
        debug_program test_prog [0] true = 1
-    ),
-    true, fprintf_bool;
-    "if_then_else_t",
-    (fun () ->
-       let test_prog_2 = if_then_else prog_somme_dizaine_unite prog_moins_1 prog_succ in
-       debug_program test_prog_2 [34] true = 6
     ),
     true, fprintf_bool;
   ]

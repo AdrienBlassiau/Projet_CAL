@@ -5,10 +5,10 @@ OCAMLDEP=ocamldep
 
 ################################################################################
 
-INTERFACES=cal.mli
-SOURCES=cal.ml test.ml
+INTERFACES=urm.mli
+SOURCES=urm.ml test.ml
 
-complet: $(INTERFACES) $(SOURCES:.ml=.cmo)
+all: $(INTERFACES) $(SOURCES:.ml=.cmo)
 	$(OCAMLC) -o run $(SOURCES:.ml=.cmo)
 
 ################################################################################
